@@ -1,5 +1,3 @@
-from sh3d.model.TextStyle import TextStylefrom sh3d.model.Color import Colorfrom sh3dkit.renderer.HomeRenderer import HomeRenderer
-
 # sh3dkit
 
 **sh3dkit** is a flexible and extensible Python library and command-line interface (CLI) toolset for working with `.sh3d` files, commonly used by Sweet Home 3D. It provides an easy way to render, visualize, and convert `.sh3d` files into other formats such as SVG, while offering an architecture to add support for additional renderers in the future.
