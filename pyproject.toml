@@ -46,8 +46,9 @@ Homepage = "https://github.com/Salamek/sh3dkit"
 [tool.setuptools.dynamic]
 version = {attr = "sh3dkit.__version__"}
 
-[tool.setuptools]
-packages = ["sh3dkit"]
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests*"]
 
 [project.scripts]
 sh3d2svg = "sh3dkit.sh2d2svg:main"
