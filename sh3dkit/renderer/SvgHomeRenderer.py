@@ -556,16 +556,21 @@ class SvgHomeRenderer(HomeRenderer):
         group.elements = svg_lines
         self.elements.append(group)
 
-    def save_to_file(self, path: Path, level: Optional[Level] = None) -> None:
+    def plot(self, level: Optional[Level] = None) -> bytes:
         self.render(level)
 
         canvas = svg.SVG(
-            viewBox=svg.ViewBoxSpec(self.plan_bounds.x, self.plan_bounds.y, self.plan_bounds.width, self.plan_bounds.height),
+            viewBox=svg.ViewBoxSpec(self.plan_bounds.x, self.plan_bounds.y, self.plan_bounds.width,
+                                    self.plan_bounds.height),
             data={'version': self.home.version},
             width=self.plan_bounds.width,
             height=self.plan_bounds.height,
             elements=self.elements + list(self.definitions.values()),
         )
+        return canvas.as_str().encode('UTF-8')
 
-        with path.open('w', encoding='utf-8') as f:
-            f.write(str(canvas))
+    def save_to_file(self, path: Path, level: Optional[Level] = None) -> None:
+        content = self.plot(level)
+
+        with path.open('wb') as f:
+            f.write(content)

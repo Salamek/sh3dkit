@@ -328,5 +328,8 @@ class HomeRenderer:
     def drawn_text(self, text: str, x: float, y: float, angle: float, style: TextStyle, color: Color, outline_color: Optional[Color] = None) -> None:
         raise NotImplementedError
 
-    def save_to_file(self, path: Path) -> None:
+    def plot(self, level: Optional[Level] = None) -> bytes:
+        raise NotImplementedError
+
+    def save_to_file(self, path: Path, level: Optional[Level] = None) -> None:
         raise NotImplementedError
