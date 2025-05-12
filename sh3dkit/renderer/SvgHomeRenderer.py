@@ -187,6 +187,7 @@ class SvgHomeRenderer(HomeRenderer):
     def drawn_rooms(self, rooms: List[Room], plan_scale: float) -> None:
         for room in rooms:
             room_polygon = svg.Polygon(
+                class_=['room'],
                 id=room.identifier,
                 points=[coord for point in room.geometry.exterior.coords for coord in point],
                 stroke="black",
