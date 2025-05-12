@@ -557,6 +557,16 @@ class SvgHomeRenderer(HomeRenderer):
         group.elements = svg_lines
         self.elements.append(group)
 
+    def render(self, level: Optional[Level] = None, plan_scale: float = 1.0) -> None:
+        self._paint_background(level)
+        self._paint_background_image(level, plan_scale)
+        self._paint_walls(level, plan_scale)
+        self._paint_rooms(level, plan_scale)
+        self._paint_dimension_lines(level, plan_scale)
+        self._paint_furniture(level, plan_scale)
+        self._paint_polylines(level, plan_scale)
+        self._paint_labels(level, plan_scale)
+
     def plot(self, level: Optional[Level] = None) -> bytes:
         self.render(level)
 
