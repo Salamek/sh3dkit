@@ -578,6 +578,11 @@ class SvgHomeRenderer(HomeRenderer):
             height=self.plan_bounds.height,
             elements=self.elements + list(self.definitions.values()),
         )
+
+        # Reset
+        self.elements = []
+        self.definitions = {}
+
         return canvas.as_str().encode('UTF-8')
 
     def save_to_file(self, path: Path, level: Optional[Level] = None) -> None:
