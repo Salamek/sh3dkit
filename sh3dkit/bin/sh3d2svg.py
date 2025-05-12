@@ -31,8 +31,6 @@ def main(input_file: str, output: str, level_name: Optional[str] = None) -> None
         svg_home_renderer = SvgHomeRenderer(file_loader.home)
         if render_levels:
             for level in render_levels:
-                if level_name and level.name != level_name:
-                    continue
                 sanitized_level_name = re.sub(r'[^A-Za-z0-9_.-]', '_', level.name)
                 modified_path = output_path.parent.joinpath('{}_{}.{}'.format(output_path.stem, sanitized_level_name, output_path.suffix))
                 click.echo(f'Rendering {input_file} to {modified_path}')
